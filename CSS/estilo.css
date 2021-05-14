@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* para cambiar el modelo de la caja */
+}
+
+html {
+    height: 100%; /* sirve para que se expanda en toda la web*/
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2rem; /*rem permite que la letra cambie segun la página*/
+    min-height: 100%; /* para que ocupe toda la página */
+}
+
+.contenedor > * { /* el > * signidica que se va a dar dentro de todo */
+    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75); /*izq superior der bajo y el ultimo numero del RGB le da la transparencia*/
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+
+}
+
+.contenedor {
+    display: grid; /* proporciona una cuadricula de una sola columna */
+    gap: 10px; /* separacion de los elementos */
+    grid-template-areas:   "header" "navbar" "sidebar" "main" "footer";  /* esto sirve para separar en areas y poder moverlas */
+}
+
+.header { 
+    grid-area: header;
+    background-color: rosybrown;
+}
+
+.navbar { 
+    grid-area: navbar;
+    background-color: rgb(155, 143, 188);
+}
+.sidebar { 
+    grid-area: sidebar;
+    background-color: rgb(57, 17, 158);
+}
+
+.main { 
+    grid-area: main;
+    background-color: rgb(240, 15, 15);
+}
+
+.footer { 
+    grid-area: footer;
+    background-color: rgb(15, 192, 30);
+}
+
+@media (min-width: 600px) {  /* tamaño para tablets */
+    .contenedor {
+        grid-template-columns: 200px auto;
+        grid-template-rows: 100px 50px auto 100px;
+        grid-template-areas: "header header" "navbar navbar" "sidebar main" "footer footer"; 
+    }
+}
+
+@media (min-width: 900px) { /* tamaño para pc */
+    .contenedor {
+        grid-template: "header header header" 100px 
+        "navbar sidebar main" auto 
+        "footer footer footer" 100px /  /* lo qe esta dps del / es las columnas y lo que esta al lado de cada palabra son las filas*/
+        200px auto 100px;
+    }
+}
